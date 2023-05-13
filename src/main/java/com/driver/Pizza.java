@@ -45,6 +45,7 @@ public class Pizza {
         if(!extraTopping) {
             totalPrice+= toppingPrice;
             extraTopping = true;
+            extraCheese = true;
         }
     }
 
