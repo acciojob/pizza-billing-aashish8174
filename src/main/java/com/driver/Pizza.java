@@ -6,7 +6,7 @@ public class Pizza {
     private String bill;
     private boolean extraCheese = false;
     private int extraCheesePrice;
-    private final boolean extraTopping = false;
+    private  boolean extraTopping = false;
     int toppingPrice;
     boolean takeAway = false;
     int bagPrise = 20;
@@ -23,7 +23,7 @@ public class Pizza {
             this.price = 400;
             this.toppingPrice = 120;
         }
-        totalPrice = price;
+        totalPrice =this.price;
         // your code goes here
     }
 
@@ -43,8 +43,8 @@ public class Pizza {
     public void addExtraToppings(){
         // your code goes her
         if(!extraTopping) {
-            totalPrice += toppingPrice;
-            boolean extraTopping = true;
+            totalPrice+= toppingPrice;
+            extraTopping = true;
         }
     }
 
