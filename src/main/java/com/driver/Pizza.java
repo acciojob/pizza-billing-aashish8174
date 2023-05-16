@@ -58,7 +58,7 @@ public class Pizza {
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         price = isVeg?vegBasePrise:nonVegBasePrise;
-        bill+="Base Price Of The Pizza: "+price+"\n";
+        bill="Base Price Of The Pizza: "+price+"\n";
         // your code goes here
     }
 
