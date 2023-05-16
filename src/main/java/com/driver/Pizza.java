@@ -3,50 +3,92 @@ package com.driver;
 public class Pizza {
     private static int price;
     boolean isVeg;
+
+    public int getToppingPrice() {
+        return toppingPrice;
+    }
+
+    public int getNonVegBasePrise() {
+        return nonVegBasePrise;
+    }
+
+    public void setNonVegBasePrise(int nonVegBasePrise) {
+        this.nonVegBasePrise = nonVegBasePrise;
+    }
+
+    public int getVegBasePrise() {
+        return vegBasePrise;
+    }
+
+    public void setVegBasePrise(int vegBasePrise) {
+        this.vegBasePrise = vegBasePrise;
+    }
+
+    public int getExtraCheesePrice() {
+        return extraCheesePrice;
+    }
+
+    public void setExtraCheesePrice(int extraCheesePrice) {
+        this.extraCheesePrice = extraCheesePrice;
+    }
+
+    public int getBagPrise() {
+        return bagPrise;
+    }
+
+    public void setBagPrise(int bagPrise) {
+        this.bagPrise = bagPrise;
+    }
+
+    public void setToppingPrice(int toppingPrice) {
+        this.toppingPrice = toppingPrice;
+    }
+
+    private int vegBasePrise = 300;
+    private int nonVegBasePrise = 400;
     private String bill;
-    private boolean extraCheese = false;
-    private int extraCheesePrice;
-    private  boolean extraTopping = false;
-    int toppingPrice;
+    private boolean isExtraCheeseAdded = false;
+    private int extraCheesePrice = 80;
+    private  boolean extraToppingAdded = false;
+     private int toppingPrice = 120;
     boolean takeAway = false;
     int bagPrise = 20;
-    private int totalPrice ;
     private boolean billGenerate = false;
-
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
-        if(isVeg){
-            this.price = 300;
-            this.toppingPrice =70;
-        }
-        else {
-            this.price = 400;
-            this.toppingPrice = 120;
-        }
-        totalPrice =this.price;
+        price = isVeg?vegBasePrise:nonVegBasePrise;
+        bill+="Base Price Of The Pizza: "+price+"\n";
         // your code goes here
     }
 
     public int getPrice(){
-        return this.price;
+        if(isExtraCheeseAdded){
+            price+=extraCheesePrice;
+            bill+="Extra Cheese Added: "+extraCheesePrice+"\n";
+        }
+        if(extraToppingAdded){
+            price+=toppingPrice;
+            bill+="Extra Toppings Added: "+toppingPrice+"\n";
+        }
+        if(takeAway){
+            price+=bagPrise;
+            bill+="Paperbag Added: "+bagPrise+"\n";
+        }
+        return price;
     }
 
     public void addExtraCheese(){
-        if(!this.extraCheese){ // no extra cheese
-            this.extraCheese = true;
-            extraCheesePrice = 80;
-            totalPrice+= extraCheesePrice;
-        }
+       if(!isExtraCheeseAdded){
+           isExtraCheeseAdded = true;
+       }
         // your code goes here
     }
 
     public void addExtraToppings(){
         // your code goes her
-        if(!extraTopping) {
-            totalPrice+= toppingPrice;
-            extraTopping = true;
-            extraCheese = true;
+        if(!extraToppingAdded) {
+            extraToppingAdded = true;
         }
     }
 
@@ -54,28 +96,10 @@ public class Pizza {
         // your code goes here
         if(!takeAway){
             takeAway=true;
-            this.totalPrice+=this.bagPrise;
         }
     }
         public String getBill () {
-            if(!billGenerate) {
-                // your code goes here
-                StringBuilder sb = new StringBuilder();
-                sb.append("Base Price Of The Pizza: ").append(price).append("\n");
-                if (extraCheese) {
-                    sb.append("Extra Cheese Added: ").append(extraCheesePrice).append("\n");
-                }
-                if (extraTopping) {
-                    sb.append("Extra Toppings Added: ").append(toppingPrice).append("\n");
-                }
-                if (takeAway) {
-                    sb.append("Paperbag Added: ").append(bagPrise).append("\n");
-                }
-                sb.append("Total Price: ").append(totalPrice).append("\n");
-                this.bill = sb.toString();
-                billGenerate = true;
-            }
+           bill+="Total Price: "+price+"\n";
         return this.bill;
     }
-
 }
