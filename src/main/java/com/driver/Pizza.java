@@ -19,7 +19,7 @@ public class Pizza {
         vegBasePrise = 300;
         nonVegBasePrise = 400;
         extraCheesePrice = 80;
-        toppingPrice = 120;
+        toppingPrice = 0;
         bagPrise = 20;
         isExtraCheeseAdded = false;
         extraToppingAdded = false;
@@ -53,10 +53,9 @@ public class Pizza {
 
     public void addExtraToppings(){
         // your code goes her
-        if(!isExtraCheeseAdded){
-           toppingPrice = extraCheesePrice;
-        }
+
         if (!extraToppingAdded) {
+            this.toppingPrice =isVeg?70:120;
             this.extraToppingAdded = true;
         }
     }
