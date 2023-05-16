@@ -5,6 +5,8 @@ public class Pizza {
     boolean isVeg;
     private int vegBasePrise ;
     private int nonVegBasePrise ;
+    private int vegToppingPrice = 70;
+    private int getNonVegToppingPrice = 120;
     private String bill;
     private boolean isExtraCheeseAdded;
     private int extraCheesePrice ;
@@ -19,7 +21,6 @@ public class Pizza {
         vegBasePrise = 300;
         nonVegBasePrise = 400;
         extraCheesePrice = 80;
-        toppingPrice = 0;
         bagPrise = 20;
         isExtraCheeseAdded = false;
         extraToppingAdded = false;
@@ -55,7 +56,7 @@ public class Pizza {
         // your code goes her
 
         if (!extraToppingAdded) {
-            this.toppingPrice =isVeg?70:120;
+            this.toppingPrice =isVeg?vegToppingPrice:nonVegBasePrise;
             this.extraToppingAdded = true;
         }
     }
