@@ -53,7 +53,10 @@ public class Pizza {
 
     public void addExtraToppings(){
         // your code goes her
-        if(!extraToppingAdded) {
+        if(!isExtraCheeseAdded){
+           toppingPrice = extraCheesePrice;
+        }
+        if (!extraToppingAdded) {
             this.extraToppingAdded = true;
         }
     }
