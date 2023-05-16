@@ -1,86 +1,52 @@
 package com.driver;
 
 public class Pizza {
-    private static int price;
+    private int price;
     boolean isVeg;
-
-    public int getToppingPrice() {
-        return toppingPrice;
-    }
-
-    public int getNonVegBasePrise() {
-        return nonVegBasePrise;
-    }
-
-    public void setNonVegBasePrise(int nonVegBasePrise) {
-        this.nonVegBasePrise = nonVegBasePrise;
-    }
-
-    public int getVegBasePrise() {
-        return vegBasePrise;
-    }
-
-    public void setVegBasePrise(int vegBasePrise) {
-        this.vegBasePrise = vegBasePrise;
-    }
-
-    public int getExtraCheesePrice() {
-        return extraCheesePrice;
-    }
-
-    public void setExtraCheesePrice(int extraCheesePrice) {
-        this.extraCheesePrice = extraCheesePrice;
-    }
-
-    public int getBagPrise() {
-        return bagPrise;
-    }
-
-    public void setBagPrise(int bagPrise) {
-        this.bagPrise = bagPrise;
-    }
-
-    public void setToppingPrice(int toppingPrice) {
-        this.toppingPrice = toppingPrice;
-    }
-
-    private int vegBasePrise = 300;
-    private int nonVegBasePrise = 400;
+    private int vegBasePrise ;
+    private int nonVegBasePrise ;
     private String bill;
-    private boolean isExtraCheeseAdded = false;
-    private int extraCheesePrice = 80;
-    private  boolean extraToppingAdded = false;
-     private int toppingPrice = 120;
-    boolean takeAway = false;
-    int bagPrise = 20;
-    private boolean billGenerate = false;
+    private boolean isExtraCheeseAdded;
+    private int extraCheesePrice ;
+    private  boolean extraToppingAdded ;
+     private int toppingPrice ;
+    boolean takeAway ;
+    private int bagPrise ;
+    private boolean billGenerated ;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
-        price = isVeg?vegBasePrise:nonVegBasePrise;
-        bill="Base Price Of The Pizza: "+price+"\n";
+        vegBasePrise = 300;
+        nonVegBasePrise = 400;
+        extraCheesePrice = 80;
+        toppingPrice = 120;
+        bagPrise = 20;
+        isExtraCheeseAdded = false;
+        extraToppingAdded = false;
+        takeAway = false;
+        billGenerated = false;
+        //price = isVeg?vegBasePrise:nonVegBasePrise;
+       // bill="Base Price Of The Pizza: "+price+"\n";
         // your code goes here
     }
 
     public int getPrice(){
-        if(isExtraCheeseAdded){
+        price = isVeg?vegBasePrise:nonVegBasePrise;
+        if(this.isExtraCheeseAdded){
             price+=extraCheesePrice;
-            bill+="Extra Cheese Added: "+extraCheesePrice+"\n";
         }
-        if(extraToppingAdded){
+        if(this.extraToppingAdded){
             price+=toppingPrice;
-            bill+="Extra Toppings Added: "+toppingPrice+"\n";
         }
-        if(takeAway){
+        if(this.takeAway){
             price+=bagPrise;
-            bill+="Paperbag Added: "+bagPrise+"\n";
         }
         return price;
     }
 
     public void addExtraCheese(){
-       if(!isExtraCheeseAdded){
-           isExtraCheeseAdded = true;
+       if(!this.isExtraCheeseAdded){
+          this.isExtraCheeseAdded = true;
        }
         // your code goes here
     }
@@ -88,18 +54,31 @@ public class Pizza {
     public void addExtraToppings(){
         // your code goes her
         if(!extraToppingAdded) {
-            extraToppingAdded = true;
+            this.extraToppingAdded = true;
         }
     }
 
     public void addTakeaway(){
         // your code goes here
         if(!takeAway){
-            takeAway=true;
+            this.takeAway=true;
         }
     }
-        public String getBill () {
-           bill+="Total Price: "+price+"\n";
+    public String getBill () {
+
+        bill="Base Price Of The Pizza: "+(isVeg?vegBasePrise:nonVegBasePrise)+"\n";
+        if(isExtraCheeseAdded){
+            bill+="Extra Cheese Added: "+extraCheesePrice+"\n";
+        }
+        if(extraToppingAdded){
+            bill+="Extra Toppings Added: "+toppingPrice+"\n";
+        }
+        if(takeAway){
+            bill+="Paperbag Added: "+bagPrise+"\n";
+        }
+        price = 0;
+        int myprice = getPrice();
+        bill+="Total Price: "+myprice+"\n";
         return this.bill;
     }
 }
