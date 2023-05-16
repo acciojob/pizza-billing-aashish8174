@@ -1,7 +1,7 @@
 package com.driver;
 
 public class Pizza {
-    private int price;
+    private static int price;
     boolean isVeg;
     private String bill;
     private boolean extraCheese = false;
@@ -61,17 +61,17 @@ public class Pizza {
             if(!billGenerate) {
                 // your code goes here
                 StringBuilder sb = new StringBuilder();
-                sb.append("Base Price Of The Pizza:").append(price).append("\n");
+                sb.append("Base Price Of The Pizza: ").append(price).append("\n");
                 if (extraCheese) {
-                    sb.append("Extra Cheese Added:").append(extraCheesePrice).append("\n");
+                    sb.append("Extra Cheese Added: ").append(extraCheesePrice).append("\n");
                 }
                 if (extraTopping) {
-                    sb.append("Extra Toppings Added:").append(toppingPrice).append("\n");
+                    sb.append("Extra Toppings Added: ").append(toppingPrice).append("\n");
                 }
                 if (takeAway) {
-                    sb.append("Paperbag Added:").append(bagPrise).append("\n");
+                    sb.append("Paperbag Added: ").append(bagPrise).append("\n");
                 }
-                sb.append("Total Price:").append(totalPrice).append("\n");
+                sb.append("Total Price: ").append(totalPrice).append("\n");
                 this.bill = sb.toString();
                 billGenerate = true;
             }
